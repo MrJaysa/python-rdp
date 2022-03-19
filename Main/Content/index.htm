@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/remixicon/remixicon.css">
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+</head>
+<body class="text-center text-white bg-dark" style="display: relative;">
+    <div class="palert_container text-dark" id="palert_body">
+        <div class="palert_body">
+            <div class="palert_content">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body mb-4 mt-4">
+                        <div id="form_body">
+                            <form id="con_form" method="post" style="display: block">
+                                <div class="bg-danger" id="err_msg" style="display: none;">
+                                    <p>
+                                        Please reset the server link because it may be possible that the server link: <span id="server_value"></span>, entered is invalid.
+                                    </p>
+                                </div>
+                                <div class="text-start">
+                                    <label for="servername" style="margin-bottom: 10px; display: block">Server Link e.g http://127.0.0.1</label>
+                                    <input type="text" id="servername" name="servername" style="text-indent: 5pt;" class="form-control" placeholder="Server Link e.g http://127.0.0.1:33333" required autofocus pattern="http?://.+:.+">
+                                    
+                                    <div style="margin-bottom: 10px;">
+                                        <button type="submit" class="btn btn-primary btn-large w-100" style="height:50px">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <form id="net_form" method="post" style="display: none;">
+                                <div class="text-start">
+                                    <label for="rdp_id" style="margin-bottom: 10px; display: block">RDP ID</label>
+                                    <input type="text" id="rdp_id" name="rdp_id" style="text-indent: 5pt;" class="form-control" placeholder="RDP ID" required autofocus>
+
+                                    <input type="hidden" name="type" value="deskop">
+                    
+                                    <label for="rdp_password" style="margin-bottom: 10px; display: block">RDP Password</label>
+                                    <input type="password" id="rdp_password" name="rdp_password" style="text-indent: 5pt;" class="form-control" placeholder="RDP Password" required>
+                    
+                                    <div style="margin-bottom: 10px;">
+                                        <button style="height:50px" type="submit" class="btn btn-primary btn-large w-100">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div id="loader" class="palert-content" style="display: none;">
+                                <div class="text-center" id="palert_img">
+                                    <img height="100px" src="./images/refresh.gif" alt="loading">
+                                </div>
+                                <p class="text-center mb-5" id="palert_msg">
+                                    Please wait, your request is been processed.
+                                </p>
+                            </div> 
+
+                        </div>
+                        <div class="text-center">
+                            <button type="button" style="height:50px" class="btn-danger btn btn-large w-100" id="palert_close">Close</button>
+                        </div>                        
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover-container d-flex w-100 h-100 p-3 pt-3 mx-auto flex-column bg-dark">
+        <header class="mb-auto">
+            <div>
+                <span class="float-md-start mb-0" style="font-size: calc(1.3rem + .6vw); font-weight: 900">
+                    TG_RDP Desktop
+                </span>
+            </div>
+        </header>
+  
+        <main class="px-3" style="margin-bottom: 22%;">
+            <h1></h1>
+            <p class="lead">
+                This application is developed for advance remote desktop capacity, interfacing multiple device for remote administrations and activities.
+            </p>
+            <p class="lead" style="margin-top: 10%">
+                <button id="conbtn" class="btn btn-primary btn-lg fw-bold w-100" style="cursor: pointer">Connect</button>
+                <button id="disbtn" class="btn btn-danger btn-lg fw-bold w-100" style="cursor: pointer; display: none">Disconnect</button>
+            </p>
+        </main>
+    </div>
+
+    <!-- js -->
+    <script src="js/socket.io.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

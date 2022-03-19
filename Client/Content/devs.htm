@@ -1,0 +1,49 @@
+<div class="card bg-secondary">
+    <div class="card-body">
+        <div style="position: relative;">
+            <div id="form_loader" class="w-100" style="height: 100%; z-index: 10; position: absolute; background: rgba(0, 0, 0, 0.87); display: none">
+                <div class="text-center" id="palert_img">
+                    <img height="150px" src="./images/refresh.gif" alt="loading">
+                </div>
+                <p class="text-center text-white mb-5" id="palert_msg">
+                    Please wait, your request is been processed.
+                </p>
+            </div>
+            <div>
+                <div class="row">
+                    {% for dev in devs %}
+                    <div class="col-12 bg-white" style="margin-bottom: 10px; border-radius: 10px; padding-top: 10px; padding-bottom: 10px;">
+                        <form class="connect_form w-100">
+                            <div class="form-err bg-danger p-3 text-white" style="display: none; width: 90%; margin: 0 auto">
+                                Password entered is wrong.
+                            </div>
+        
+                            <div style="width: 30%; display: inline-block">
+                                <h4 class="text-start">
+                                    ID: <span class="text-success">{{dev.rid}}</span>
+                                </h4>
+                            </div>
+                            <div style="width: 60%; margin-left: 5%; display: inline-block; margin-bottom: 10px;">
+                                <input type="hidden" value="{{dev.rid}}" name="rid">
+                                <input type="password" placeholder="Enter password" name="pwd" class="form-control w-100" style="height: 30px !important; text-indent: 5pt;" required>
+                            </div>
+                            <div class="w-100" style="display:inline-block; text-align:center">
+                                <button class="btn btn-primary w-75" type="submit">
+                                    Connect
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    {% else %}
+                    <div class="col-12 text-center bg-white" style="border-radius: 10px;">
+                        <p class="p-5">
+                            No transmitting user has been connected on the platform at the moment.
+                            Please close and reopen this tab, this is because features for automatic user update has not yet been implemented.
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
